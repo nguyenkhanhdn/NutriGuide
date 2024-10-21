@@ -18,6 +18,11 @@ namespace NutriGuide.Controllers
             return View();
         }
 
+        public IActionResult Bmi()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
