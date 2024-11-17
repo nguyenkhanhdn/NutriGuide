@@ -23,7 +23,21 @@ namespace NutriGuide.Controllers
             return View();
         }
 
+        public IActionResult Symptom()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }

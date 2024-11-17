@@ -1,0 +1,82 @@
+﻿@model NutriGuide.Models.Standard
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_ContLayout.cshtml";
+}
+@section left_menu {
+    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-box">
+            <h4>Chỉ số BMI</h4>
+            <div class="services-list">
+                <a href="#chiso" class="active"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số BMI</span></a>
+                <a href="#chiso"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số BMI</span></a>
+                <a href="#congthuc"><i class="bi bi-arrow-right-circle"></i><span>Công thức tính chỉ số BMI</span></a>
+                <a href="#phanloai"><i class="bi bi-arrow-right-circle"></i><span>Phân loại mức độ gầy béo</span></a>
+                <a href="#vongeo"><i class="bi bi-arrow-right-circle"></i><span>Tỉ lệ vòng eo/mông</span></a>
+
+            </div>
+        </div><!-- End Services List -->
+
+        <div class="service-box">
+            <h4>Tài liệu tham khảo</h4>
+            <div class="download-catalog">
+                <a href="#"><i class="bi bi-filetype-pdf"></i><span>Định dạng PDF</span></a>
+                <a href="#"><i class="bi bi-file-earmark-word"></i><span>Định dạng DOC</span></a>
+            </div>
+        </div><!-- End Services List -->
+
+        <div class="help-box d-flex flex-column justify-content-center align-items-center">
+            <i class="bi bi-headset help-icon"></i>
+            <h4>Câu hỏi trực tiếp?</h4>
+            <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>+084 905 223 344</span></p>
+            <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:info@nutriguide.com">info@nutriguide.com</a></p>
+        </div>
+    </div>
+}
+@section heading {
+    <h3>Bảng chỉ số phát triển tiêu chuẩn</h3>
+}
+
+@section page {
+    <span>Chỉ số phát triển tiêu chuẩn</span>
+}
+
+<h4>Chỉ số phát triển tiêu chuẩn</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
