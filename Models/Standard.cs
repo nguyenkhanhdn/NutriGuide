@@ -7,9 +7,9 @@ namespace NutriGuide.Models{
         [Display(Name ="Tuổi")]
         public required string Age { get; set; }
         [Display(Name = "Cân nặng")]
-        public required string Weight { get; set; }
+        public required float Weight { get; set; }
         [Display(Name = "Chiều cao")]
-        public required string Height { get; set; }
+        public required float Height { get; set; }
         [Display(Name = "Giới tính")]
         public required string Gender {  get; set; } 
     }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NutriGuide.Models;
 
@@ -10,9 +11,11 @@ using NutriGuide.Models;
 namespace NutriGuide.Migrations
 {
     [DbContext(typeof(NutriGuideDbContext))]
-    partial class NutriGuideDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123133128_aaa")]
+    partial class aaa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
