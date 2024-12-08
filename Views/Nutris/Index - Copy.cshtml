@@ -1,7 +1,7 @@
-﻿@model IEnumerable<NutriGuide.Models.Bmi>
+﻿@model IEnumerable<NutriGuide.Models.Nutri>
 
 @{
-    ViewData["Title"] = "Chỉ số BMI";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_ContLayout.cshtml";
 }
 
@@ -36,23 +36,30 @@
     </div>
 }
 @section heading {
-    <h3>Bảng chỉ số BMI theo hướng dẫn của Viện Dinh dưỡng</h3>
+    <h3>Triệu chứng thiếu dinh dưỡng</h3>
 }
 
 @section page {
-    <span>Chỉ số BMI</span>
+    <span>Triệu chứng thiếu dinh dưỡng</span>
 }
+
 <table class="table display" id="mytable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Age)
+                @Html.DisplayNameFor(model => model.Nutrient)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaleBmi)
+                @Html.DisplayNameFor(model => model.Symptom)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FenaleBmi)
+                @Html.DisplayNameFor(model => model.Food2Eat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount2Eat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Frequency)
             </th>
             <th></th>
         </tr>
@@ -61,13 +68,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Age)
+                @Html.DisplayFor(modelItem => item.Nutrient)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaleBmi)
+                @Html.DisplayFor(modelItem => item.Symptom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FenaleBmi)
+                @Html.DisplayFor(modelItem => item.Food2Eat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount2Eat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Frequency)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -78,7 +91,7 @@
 }
     </tbody>
 </table>
-@section Scripts{
+@section Scripts {
 
     <script type="text/javascript">
         $(document).ready(function () {

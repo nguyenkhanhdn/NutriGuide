@@ -1,7 +1,5 @@
-﻿@model IEnumerable<NutriGuide.Models.Bmi>
-
-@{
-    ViewData["Title"] = "Chỉ số BMI";
+﻿@{
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_ContLayout.cshtml";
 }
 
@@ -36,53 +34,49 @@
     </div>
 }
 @section heading {
-    <h3>Bảng chỉ số BMI theo hướng dẫn của Viện Dinh dưỡng</h3>
+    <h3>Chỉ số BMI theo hướng dẫn của Viện Dinh dưỡng Quốc gia</h3>
 }
 
 @section page {
-    <span>Chỉ số BMI</span>
+    <span>BMI</span>
 }
-<table class="table display" id="mytable">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaleBmi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FenaleBmi)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaleBmi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FenaleBmi)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-@section Scripts{
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#mytable').DataTable();
-        });
-    </script>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="BmiCheck" asp-controller="Bmis">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label name="lblHeight" class="control-label">Chiều cao (cm)</label>
+                <input name="Height" type="text" required class="form-control" />
+            </div>
+            <div class="form-group">
+                <label name="lblWeight" class="control-label">Cân nặng (kg)</label>
+                <input name="Weight" type="text" required class="form-control" />
+            </div>
+            
+            <p></p>
+            <div class="form-group">
+                <input type="submit" value="Kiểm tra" class="btn btn-primary" />
+            </div>
+
+            <hr/>
+            @{
+                if (ViewBag.Message != null)
+                {
+                    <div class="form-group">
+                        <label class="control-label">Chỉ số BMI: @ViewBag.BmiIndex</label>
+                    <div name="BMIIndex" class="form-control">Kết luận: @ViewBag.Message</div>
+                    </div>
+                }
+            }
+            <p></p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

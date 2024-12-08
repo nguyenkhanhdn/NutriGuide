@@ -10,8 +10,8 @@
         <div class="service-box">
             <h4>Chỉ số BMI</h4>
             <div class="services-list">
-                <a href="#chiso" class="active"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số BMI</span></a>
-                <a href="#chiso"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số BMI</span></a>
+                <a href="~/Bmis/BmiCheck" class="active"><i class="bi bi-arrow-right-circle"></i><span>Đo chỉ số BMI</span></a>
+                <a href="~/Bmis/Index"><i class="bi bi-arrow-right-circle"></i><span>Bảng chỉ số BMI</span></a>
                 <a href="#congthuc"><i class="bi bi-arrow-right-circle"></i><span>Công thức tính chỉ số BMI</span></a>
                 <a href="#phanloai"><i class="bi bi-arrow-right-circle"></i><span>Phân loại mức độ gầy béo</span></a>
                 <a href="#vongeo"><i class="bi bi-arrow-right-circle"></i><span>Tỉ lệ vòng eo/mông</span></a>
@@ -35,22 +35,30 @@
         </div>
     </div>
 }
-@section heading {
-    <h3>Triệu chứng thiếu dinh dưỡng</h3>
-}
+
 
 @section page {
     <span>Triệu chứng thiếu dinh dưỡng</span>
 }
+<form method="post" action="search">
+    <fieldset>
+        <legend>Thiếu vi chất và các triệu chứng</legend>
+        <div class="input-group">
 
-<p>
-    <a asp-action="Create">Thêm mới</a>
-</p>
+            <input required type="text" name="symptom" class="form-control rounded" placeholder="Triệu chứng cơ thể" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-success" data-mdb-ripple-init>Tra cứu</button>
+        </div>
+
+    </fieldset>
+</form>
+<hr/>
+
 <table class="table display" id="mytable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nutrient)
+                Thiếu vi chất
+                @* @Html.DisplayNameFor(model => model.Nutrient) *@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Symptom)
@@ -86,9 +94,7 @@
                 @Html.DisplayFor(modelItem => item.Frequency)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> 
             </td>
         </tr>
 }
@@ -100,5 +106,7 @@
         $(document).ready(function () {
             $('#mytable').DataTable();
         });
+
+        
     </script>
 }

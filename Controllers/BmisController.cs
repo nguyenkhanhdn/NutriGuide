@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,56 @@ namespace NutriGuide.Controllers
     public class BmisController : Controller
     {
         private readonly NutriGuideDbContext _context;
+
+        [HttpGet]
+        public IActionResult BMICheck()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BMICheck(float height,float weight)
+        {
+            try
+            {
+                var h = height / 100;
+                var msg = "";
+                var bmiIndex = weight / (h * h);
+                if (bmiIndex >= 40)
+                {
+                    msg = "Béo phì cấp độ III.";
+                }
+                else if (bmiIndex >= 30)
+                {
+                    msg = "Béo phì cấp độ II";
+                }
+                else if (bmiIndex >= 25)
+                {
+                    msg = "Béo phì cấp độ I";
+                }
+                else if (bmiIndex > 23)
+                {
+                    msg = "Thừa cân";
+                }
+                else if (bmiIndex >= 18.5)
+                {
+                    msg = "Bình thường";
+                }
+                else
+                {
+                    msg = "Thấp, gầy.";
+                }
+                ViewBag.Message = msg;
+                ViewBag.BmiIndex = bmiIndex;
+            }
+            catch (Exception)
+            {
+                ViewBag.Message = "Cung cấp dữ liệu chưa chính xác";
+                ViewBag.BmiIndex = 0;
+
+            }
+            
+            return View();
+        }
 
         public BmisController(NutriGuideDbContext context)
         {

@@ -37,6 +37,26 @@ namespace NutriGuide.Controllers
             return View(nutri);
         }
 
+        [HttpGet]
+        // GET: Nutris/Create
+        public IActionResult Search()
+        {
+            return View();
+        }
+        // GET: Nutris/Create
+        [HttpPost]
+        public IActionResult Search(string symptom)
+        {
+            var symptoms = symptom.Split(',');
+
+            IQueryable<Nutri> query = _context.Nutris;
+
+            foreach (string keyword in symptoms)
+                query = query.Where(p => p.Symptom.Contains(keyword));
+
+            return View("index",query);
+        }
+
         // GET: Nutris/Create
         public IActionResult Create()
         {

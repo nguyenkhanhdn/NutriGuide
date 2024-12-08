@@ -7,7 +7,7 @@ namespace NutriGuide.Models
     public class Nutri
     {
         public int Id { get; set; }
-        [Display(Name ="Dinh dưỡng")]
+        [Display(Name ="Vi chất")]
         [Required(ErrorMessage = "Dinh dưỡng yêu cầu phải nhập.")]
         public required string Nutrient { get; set; }
         [Required(ErrorMessage = "Triệu chứng yêu cầu phải nhập.")]
