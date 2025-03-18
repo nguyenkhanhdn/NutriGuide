@@ -1,51 +1,49 @@
 ﻿@using NutriGuide.Controllers;
 
 @{
-    ViewData["Title"] = "Nhận biết dinh dưỡng của trẻ";
+    ViewData["Title"] = "Kiểm tra thực phẩm";
     Layout = "~/Views/Shared/_ContLayout.cshtml";
 }
-
 @section left_menu {
-    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-box">
-            <h4>Chỉ số BMI</h4>
-            <div class="services-list">
-                <a href="#chiso" class="active"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số BMI</span></a>
-                <a href="#chiso"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số BMI</span></a>
-                <a href="#congthuc"><i class="bi bi-arrow-right-circle"></i><span>Công thức tính chỉ số BMI</span></a>
-                <a href="#phanloai"><i class="bi bi-arrow-right-circle"></i><span>Phân loại mức độ gầy béo</span></a>
-                <a href="#vongeo"><i class="bi bi-arrow-right-circle"></i><span>Tỉ lệ vòng eo/mông</span></a>
-
-            </div>
-        </div><!-- End Services List -->
-
-        <div class="service-box">
-            <h4>Tài liệu tham khảo</h4>
-            <div class="download-catalog">
-                <a href="#"><i class="bi bi-filetype-pdf"></i><span>Định dạng PDF</span></a>
-                <a href="#"><i class="bi bi-file-earmark-word"></i><span>Định dạng DOC</span></a>
-            </div>
-        </div><!-- End Services List -->
-
-        <div class="help-box d-flex flex-column justify-content-center align-items-center">
-            <i class="bi bi-headset help-icon"></i>
-            <h4>Câu hỏi trực tiếp?</h4>
-            <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>+084 905 223 344</span></p>
-            <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:info@nutriguide.com">info@nutriguide.com</a></p>
+<div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+    <div class="service-box">
+        <h4>Thông tin Y tế</h4>
+        <div class="services-list">
+            <a href="#tieuduong" class="active"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số đường huyết</span></a>
+            <a href="#huyetap"><i class="bi bi-arrow-right-circle"></i><span>Huyết áp</span></a>
+            <a href="#loikhuyentd"><i class="bi bi-arrow-right-circle"></i><span>Lời khuyên cho bệnh tiểu đường</span></a>
+            <a href="#loikhuyenha"><i class="bi bi-arrow-right-circle"></i><span>Lời khuyên cho bệnh cao huyết áp</span></a>
+            <a href="#thucpham"><i class="bi bi-arrow-right-circle"></i><span>Thực phẩm</span></a>
         </div>
+    </div><!-- End Services List -->
+
+    <div class="service-box">
+        <h4>Tài liệu tham khảo</h4>
+        <div class="download-catalog">
+            <a href="#"><i class="bi bi-filetype-pdf"></i><span>Định dạng PDF</span></a>
+            <a href="#"><i class="bi bi-file-earmark-word"></i><span>Định dạng DOC</span></a>
+        </div>
+    </div><!-- End Services List -->
+
+    <div class="help-box d-flex flex-column justify-content-center align-items-center">
+        <i class="bi bi-headset help-icon"></i>
+        <h4>Câu hỏi trực tiếp?</h4>
+        <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>+084 905 223 344</span></p>
+        <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:info@nutriguide.com">info@nutriguide.com</a></p>
     </div>
+</div>
 }
 
 @section heading {
-    Nhận biết trẻ qua hình ảnh
+Kiểm tra thực phẩm
 }
 <p></p>
-<h4>Chọn file để upload</h4>
+<h4>Chọn file để tải lên</h4>
 <hr />
 <div class="row">
     <div class="col-md-12">
         <form method="post" asp-controller="Home" asp-action="Predict"
-              enctype="multipart/form-data">
+        enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
             <input type="file" name="uploadFile" class="form-control" />
             <br/>
@@ -59,8 +57,13 @@
 @if (@ViewBag.Result != null)
 {
     var pr = @ViewBag.Result as PredictResult;
-    
-    if (pr.Label=="OK")
+    var per = pr.Score * 100;
+    <span>@per %</span> <br/>
+
+    <span>@pr.Label</span>
+    <br />
+
+    @* if (pr.Label=="OK")
     {
         if (pr.Score > 0.5)
         {
@@ -78,5 +81,5 @@
             </strong>
         }
 
-    }
+    } *@
 }

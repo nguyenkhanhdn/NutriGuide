@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Nutri Guide - @ViewBag.Title</title>
+    <title>NutriCheck - @ViewBag.Title</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -55,27 +55,25 @@
                 <a href="~/Home" class="logo d-flex align-items-center">
                     <!-- Uncomment the line below if you also wish to use an image logo -->
                     <!-- <img src="assets/img/logo.png" alt=""> -->
-                    <h1 class="sitename">NutriGuide</h1>
+                    <h1 class="sitename">NutriCheck</h1>
                 </a>
 
                 <nav id="navmenu" class="navmenu">
                     <ul>
                         <li><a href="~/Home" class="active">Trang chủ</a></li>
-                        <li><a href="~/Home/Predict">Nhận biết</a></li>
-                        <li><a href="~/Nutris/Index">Triệu chứng</a></li>
-                        <li><a href="~/Bmis/BMICheck">Đo chỉ số BMI</a></li>
-                        <li><a href="~/Standards/Index">Bảng tiêu chuẩn</a></li>
                         <li class="dropdown">
-                            <a href="#"><span>Dinh dưỡng</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <a href="#"><span>Thông tin Y tế</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
-                                <li><a href="#">Kiến thức dinh dưỡng</a></li>                                
-                                <li><a href="#">Kế hoạch bữa ăn</a></li>
-                                <li><a href="#">Thói quen ăn uống</a></li>
-                                <li><a href="#">Mục tiêu cá nhân</a></li>
-
-                                <li><a href="#">Nâng cao nhận thức</a></li>
+                                <li><a href="~/home/tieuduong">Bệnh tiểu đường</a></li>
+                                <li><a href="~/home/huyetap">Bệnh cao huyết áp</a></li>
                             </ul>
                         </li>
+
+                        <li><a href="~/Home/Predict">Kiểm tra</a></li>
+                        <li><a href="~/Nutris/Index">Thực đơn</a></li>
+                        <li><a href="~/Bmis/BMICheck">Theo dõi sức khỏe</a></li>
+                        <li><a href="~/Standards/Index">Lịch sử kiểm tra</a></li>
+                        <li><a href="~/Standards/Index">Cộng đồng</a></li>
                         <li><a href="~/Home/Contact/#contact">Liên hệ</a></li>
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -93,8 +91,8 @@
                 <div class="carousel-item active">
                     <img src="~/assets/img/hero-carousel/ng1.jpg" alt="">
                     <div class="carousel-container">
-                        <h2>Chào mừng bạn đến với NutriGuide</h2>
-                        <p>Một Nutrition Guide, trang thông tin cung cấp kiến thức về dinh dưỡng và lối sống lành mạnh, nhằm giúp mọi người hiểu rõ hơn về cách lựa chọn thực phẩm, lên kế hoạch ăn uống, và duy trì chế độ dinh dưỡng cân đối để có sức khỏe tốt.</p>
+                        <h2>Chào mừng bạn đến với NutriCheck</h2>
+                        <p>Nutrition Check là một giải pháp thông minh giúp người dùng kiểm tra mức độ ảnh hưởng của thực phẩm đến bệnh tiểu đường và huyết áp. Bằng cách sử dụng dữ liệu khoa học và công nghệ phân tích dinh dưỡng, ứng dụng cung cấp thông tin chính xác về thực phẩm, gợi ý lựa chọn thay thế lành mạnh và hỗ trợ theo dõi sức khỏe theo thời gian thực.</p>
                         <a href="#featured-services" class="btn-get-started">Khám phá</a>
                     </div>
                 </div><!-- End Carousel Item -->
@@ -102,8 +100,8 @@
                 <div class="carousel-item">
                     <img src="~/assets/img/hero-carousel/ng2.jpg" alt="">
                     <div class="carousel-container">
-                        <h2>Kiến thức về dinh dưỡng</h2>
-                        <p>Một Nutrition Guide, trang thông tin cung cấp kiến thức về dinh dưỡng và lối sống lành mạnh, nhằm giúp mọi người hiểu rõ hơn về cách lựa chọn thực phẩm, lên kế hoạch ăn uống, và duy trì chế độ dinh dưỡng cân đối để có sức khỏe tốt.</p>
+                        <h2>Nutrition check, giải pháp thông minh</h2>
+                        <p>Với giao diện thân thiện và hệ thống cảnh báo thông minh, phần mềm giúp người dùng duy trì chế độ ăn uống hợp lý, kiểm soát tốt các chỉ số sức khỏe và phòng tránh rủi ro một cách hiệu quả.</p>
                         <a href="#featured-services" class="btn-get-started">Khám phá</a>
                     </div>
                 </div><!-- End Carousel Item -->
@@ -111,8 +109,8 @@
                 <div class="carousel-item">
                     <img src="~/assets/img/hero-carousel/ng3.jpg" alt="">
                     <div class="carousel-container">
-                        <h2>Nhận biết cơ thể thiếu chất (Vitamin)</h2>
-                        <p>Một Nutrition Guide, trang thông tin cung cấp kiến thức về dinh dưỡng và lối sống lành mạnh, nhằm giúp mọi người hiểu rõ hơn về cách lựa chọn thực phẩm, lên kế hoạch ăn uống, và duy trì chế độ dinh dưỡng cân đối để có sức khỏe tốt.</p>
+                        <h2>Tiện lợi và hữu ích cho người dùng</h2>
+                        <p>Ngoài ra, ứng dụng còn tích hợp chức năng quét mã để nhận diện thực phẩm nhanh chóng, giúp người dùng dễ dàng kiểm tra thông tin dinh dưỡng và đưa ra quyết định phù hợp ngay khi mua sắm</p>
                         <a href="#featured-services" class="btn-get-started">Khám phá</a>
                     </div>
                 </div><!-- End Carousel Item -->
