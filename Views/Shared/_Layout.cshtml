@@ -64,17 +64,39 @@
                         <li class="dropdown">
                             <a href="#"><span>Thông tin Y tế</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
-                                <li><a href="~/home/tieuduong">Bệnh tiểu đường</a></li>
-                                <li><a href="~/home/huyetap">Bệnh cao huyết áp</a></li>
+                                <li><a href="~/Home/Tieuduong">Bệnh tiểu đường</a></li>
+                                <li><a href="~/Home/Tieuduong">Bệnh cao huyết áp</a></li>
                             </ul>
                         </li>
 
                         <li><a href="~/Home/Predict">Kiểm tra</a></li>
-                        <li><a href="~/Nutris/Index">Thực đơn</a></li>
-                        <li><a href="~/Bmis/BMICheck">Theo dõi sức khỏe</a></li>
-                        <li><a href="~/Standards/Index">Lịch sử kiểm tra</a></li>
-                        <li><a href="~/Standards/Index">Cộng đồng</a></li>
-                        <li><a href="~/Home/Contact/#contact">Liên hệ</a></li>
+                        <li><a href="~/FoodRecords/Index">Thực đơn</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Theo dõi sức khỏe</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a href="~/Users/Index">1. Quản lý người dùng</a></li>
+                                <li><a href="~/HealthRecords/Index">2. Quản lý các chỉ số sức khỏe</a></li>
+                                <li><a href="~/Home/history">3. Theo dõi sức khỏe</a></li>
+                            </ul>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">👤 @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-link text-dark" href="/Identity/Account/Login">Login</a>
+                            </li>
+                        }
+                        
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>

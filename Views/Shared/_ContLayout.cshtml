@@ -23,7 +23,8 @@
     <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="~/css/datatables.datatables.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" /> 
+
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet">
 
@@ -70,11 +71,33 @@
                         </li>
 
                         <li><a href="~/Home/Predict">Kiểm tra</a></li>
-                        <li><a href="~/Home/MealPlans">Thực đơn</a></li>
-                        <li><a href="~/Home/HealthTracking">Theo dõi sức khỏe</a></li>
-                        <li><a href="~/Home/History">Lịch sử kiểm tra</a></li>
-                        <li><a href="~/Home/Community ">Cộng đồng</a></li>
-                        <li><a href="~/Home/Contact/#contact">Liên hệ</a></li>
+                        <li><a href="~/FoodRecords/Index">Thực đơn</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Theo dõi sức khỏe</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a href="~/Users/Index">1. Quản lý người dùng</a></li>
+                                <li><a href="~/HealthRecords/Index">2. Quản lý các chỉ số sức khỏe</a></li>
+                                <li><a href="~/Home/history">3. Theo dõi sức khỏe</a></li>
+                            </ul>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">👤 @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-link text-dark" href="/Identity/Account/Login">Login</a>
+                            </li>
+                        }
+
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>
@@ -115,7 +138,35 @@
 
                 
                 <div class="row gy-5">
-                    @RenderSection("left_menu", required: true)
+                    
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-box">
+                                <h4>Thông tin Y tế</h4>
+                                <div class="services-list">
+                                    <a href="#item-1" class="active"><i class="bi bi-arrow-right-circle"></i><span>Chỉ số đường huyết</span></a>
+                                    <a href="#item-2"><i class="bi bi-arrow-right-circle"></i><span>Huyết áp</span></a>
+                                    <a href="#item-3"><i class="bi bi-arrow-right-circle"></i><span>Lời khuyên cho bệnh tiểu đường</span></a>
+                                    <a href="#item-4"><i class="bi bi-arrow-right-circle"></i><span>Lời khuyên cho bệnh cao huyết áp</span></a>
+                                    <a href="#thucpham"><i class="bi bi-arrow-right-circle"></i><span>Thực phẩm</span></a>
+                                </div>
+                            </div><!-- End Services List -->
+
+                            <div class="service-box">
+                                <h4>Tài liệu tham khảo</h4>
+                                <div class="download-catalog">
+                                    <a href="#"><i class="bi bi-filetype-pdf"></i><span>Định dạng PDF</span></a>
+                                    <a href="#"><i class="bi bi-file-earmark-word"></i><span>Định dạng DOC</span></a>
+                                </div>
+                            </div><!-- End Services List -->
+
+                            <div class="help-box d-flex flex-column justify-content-center align-items-center">
+                                <i class="bi bi-headset help-icon"></i>
+                                <h4>Câu hỏi trực tiếp?</h4>
+                                <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>+084 905 223 344</span></p>
+                                <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:info@nutriguide.com">info@nutriguide.com</a></p>
+                            </div>
+                        </div>
+                    
                     
 
                     <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
@@ -208,8 +259,12 @@
     <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="~/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="~/js/datatables.min.js"></script>
-
+    @* <script src="~/js/datatables.min.js"></script> *@
+    <script src="~/js/simple-datatables.js"></script>
+    @* <script src="~/assets/vendor/chart.js/chart.js" type="module"></script>
+     *@
+     <script src="~/assets/vendor/chart.js/chart.umd.js"></script>
+    
     <!-- Main JS File -->
     <script src="~/assets/js/main.js"></script>
 

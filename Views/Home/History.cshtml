@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "History";
+    Layout = "~/Views/Shared/_ContLayout.cshtml";
+}
+<style>
+    .center-trad {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom:25px;
+    }
+</style>
+
+<h1 class="center-trad">Theo dõi các chỉ số</h1>
+
+<h4>Biểu đồ theo dõi chỉ số</h4>
+<hr/>
+<h5>Người dùng: <span>@User.Identity.Name</span></h5>
+<p></p>
+<canvas id="ctx" style="max-height:400px;"></canvas>
+
+@section Scripts {
+    <script>
+
+        let userId = '@ViewBag.UserId';
+        var url = "/api/healthrecordapis/" + userId;                    
+        alert(url);
+
+        console.log("Fetching data from:", url); // Debug URL
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Received Data:", data); // Debug dữ liệu nhận được
+
+                if (!Array.isArray(data) || data.length === 0) {
+                    console.error("No data received!");
+                    return;
+                }
+
+                // Chuyển đổi JSON thành mảng
+                const dates = data.map(item => item.date); // Mảng ngày tháng
+                const bloodSugar = data.map(item => item.bloodSugar); // Mảng đường huyết
+                const systolicBP = data.map(item => item.systolicBP); // Mảng huyết áp tâm thu
+                const diastolicBP = data.map(item => item.diastolicBP); // Mảng huyết áp tâm trương
+               
+                
+                console.log("Labels (Dates):", dates[0]);
+                console.log("Blood Sugar:", bloodSugar[0]);
+                console.log("Systolic BP:", systolicBP[0]);
+                console.log("Diastolic BP:", diastolicBP[0]);
+
+                var ctx = document.getElementById("ctx");
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: 'Chỉ số đường huyết',
+                            data: [65, 59, 80, 81, 56, 55, 40],
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Huyết áp tâm thu',
+                            data: [75, 50, 70, 91, 66, 45, 50],
+                            fill: false,
+                            borderColor: 'rgb(255, 99, 132)',
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Huyết áp tâm trương',
+                            data: [35, 30, 50, 71, 56, 35, 70],
+                            fill: false,
+                            borderColor: 'rgb(0, 0, 255)',
+                            tension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    }
+                }
+            });
+        });    
+    </script>
+}

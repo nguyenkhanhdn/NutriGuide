@@ -1,0 +1,64 @@
+﻿@model IEnumerable<NutriGuide.Models.FoodRecord>
+
+@{
+    ViewData["Title"] = "Index"; Layout = "_ContLayout";
+}
+
+<h1>Quản lý thực phẩm</h1>
+
+<p>
+    <a asp-action="Create">Thêm mới</a>
+</p>
+<table class="table dataTable" id="FoodRecords">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlycemicIndex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateConsumed)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlycemicIndex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateConsumed)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        const dataTable = new simpleDatatables.DataTable("#FoodRecords", {
+            perPageSelect: [5, 10, 15, ["All", -1]],
+            searchable: true,
+            fixedHeight: true,
+
+        });
+    </script>
+}
