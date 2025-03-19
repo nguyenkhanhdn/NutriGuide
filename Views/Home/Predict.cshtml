@@ -4,7 +4,7 @@
     ViewData["Title"] = "Kiểm tra thực phẩm";
     Layout = "~/Views/Shared/_ContLayout.cshtml";
 }
-@section left_menu {
+@* @section left_menu {
 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
     <div class="service-box">
         <h4>Thông tin Y tế</h4>
@@ -32,7 +32,7 @@
         <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:info@nutriguide.com">info@nutriguide.com</a></p>
     </div>
 </div>
-}
+} *@
 
 @section heading {
 Kiểm tra thực phẩm
@@ -58,28 +58,1571 @@ Kiểm tra thực phẩm
 {
     var pr = @ViewBag.Result as PredictResult;
     var per = pr.Score * 100;
-    <span>@per %</span> <br/>
+    <span>@per %</span>
+    <br />
 
     <span>@pr.Label</span>
     <br />
 
-    @* if (pr.Label=="OK")
+    if (pr.Label == "lê")
     {
-        if (pr.Score > 0.5)
-        {
-            <strong>
-                Trẻ phát triển bình thường.
-            </strong>
-        }        
-    }
-    if (pr.Label=="NotOK")
-    {
-        if (pr.Score > 0.5)
-        {
-            <strong>
-                Trẻ thiếu dinh dưỡng.
-            </strong>
-        }
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g lê</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thành Phần</th>
+                        <th>Giá Trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nước</td>
+                        <td>84 g</td>
+                    </tr>
+                    <tr>
+                        <td>Năng Lượng</td>
+                        <td>57 kcal</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>239 kJ</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>0.36 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Lipid (Chất béo)</td>
+                        <td>0.14 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tro</td>
+                        <td>0.32 g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrate</td>
+                        <td>15.2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Chất xơ (Tổng hợp)</td>
+                        <td>3.1 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Đường</td>
+                        <td>9.75 g</td>
+                    </tr>
+                    <tr>
+                        <td>Sucrose</td>
+                        <td>0.71 g</td>
+                    </tr>
+                    <tr>
+                        <td>Glucose</td>
+                        <td>2.6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fructose</td>
+                        <td>6.42 g</td>
+                    </tr>
+                    <tr>
+                        <td>Canxi (Ca)</td>
+                        <td>9 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Sắt (Fe)</td>
+                        <td>0.18 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magie (Mg)</td>
+                        <td>7 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Photpho (P)</td>
+                        <td>12 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kali (K)</td>
+                        <td>116 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Natri (Na)</td>
+                        <td>1 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kẽm (Zn)</td>
+                        <td>0.1 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Đồng (Cu)</td>
+                        <td>0.082 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Mangan (Mn)</td>
+                        <td>0.048 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Selen (Se)</td>
+                        <td>0.1 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Fluoride (F)</td>
+                        <td>2.2 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin C (Tổng Ascorbic Acid)</td>
+                        <td>4.3 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Thiamin</td>
+                        <td>0.012 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Riboflavin</td>
+                        <td>0.026 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Niacin</td>
+                        <td>0.161 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Acid Pantothenic</td>
+                        <td>0.049 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin B-6</td>
+                        <td>0.029 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Folate (Tổng)</td>
+                        <td>7 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Choline (Tổng)</td>
+                        <td>5.1 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin A (RAE)</td>
+                        <td>1 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin K (Phylloquinone)</td>
+                        <td>4.4 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin E (Alpha-tocopherol)</td>
+                        <td>0.12 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Axit béo bão hòa</td>
+                        <td>0.022 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Axit béo không bão hòa đơn</td>
+                        <td>0.084 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Axit béo không bão hòa đa</td>
+                        <td>0.094 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tryptophan</td>
+                        <td>0.002 g</td>
+                    </tr>
+                    <tr>
+                        <td>Threonine</td>
+                        <td>0.011 g</td>
+                    </tr>
+                    <tr>
+                        <td>Isoleucine</td>
+                        <td>0.011 g</td>
+                    </tr>
+                    <tr>
+                        <td>Leucine</td>
+                        <td>0.019 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lysine</td>
+                        <td>0.017 g</td>
+                    </tr>
+                    <tr>
+                        <td>Methionine</td>
+                        <td>0.002 g</td>
+                    </tr>
+                    <tr>
+                        <td>Cystine</td>
+                        <td>0.002 g</td>
+                    </tr>
+                    <tr>
+                        <td>Phenylalanine</td>
+                        <td>0.011 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tyrosine</td>
+                        <td>0.002 g</td>
+                    </tr>
+                    <tr>
+                        <td>Valine</td>
+                        <td>0.017 g</td>
+                    </tr>
+                    <tr>
+                        <td>Arginine</td>
+                        <td>0.01 g</td>
+                    </tr>
+                    <tr>
+                        <td>Histidine</td>
+                        <td>0.002 g</td>
+                    </tr>
+                    <tr>
+                        <td>Alanine</td>
+                        <td>0.014 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid Aspartic</td>
+                        <td>0.105 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid Glutamic</td>
+                        <td>0.03 g</td>
+                    </tr>
+                    <tr>
+                        <td>Glycine</td>
+                        <td>0.013 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proline</td>
+                        <td>0.021 g</td>
+                    </tr>
+                    <tr>
+                        <td>Serine</td>
+                        <td>0.015 g</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    } *@
+
+            Theo https://fdc.nal.usda.gov/food-details/169118/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này phù hợp cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "chuối")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g chuối</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thành Phần</th>
+                        <th>Giá Trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nước</td>
+                        <td>74.9 g</td>
+                    </tr>
+                    <tr>
+                        <td>Năng Lượng</td>
+                        <td>89 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Năng Lượng</td>
+                        <td>371 kJ</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>1.09 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Lipid (Chất béo)</td>
+                        <td>0.33 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tro</td>
+                        <td>0.82 g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrate</td>
+                        <td>22.8 g</td>
+                    </tr>
+                    <tr>
+                        <td>Chất xơ (Tổng hợp)</td>
+                        <td>2.6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Đường</td>
+                        <td>12.2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Sucrose</td>
+                        <td>2.39 g</td>
+                    </tr>
+                    <tr>
+                        <td>Glucose</td>
+                        <td>4.98 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fructose</td>
+                        <td>4.85 g</td>
+                    </tr>
+                    <tr>
+                        <td>Starch</td>
+                        <td>5.38 g</td>
+                    </tr>
+                    <tr>
+                        <td>Canxi (Ca)</td>
+                        <td>5 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Sắt (Fe)</td>
+                        <td>0.26 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magnesium (Mg)</td>
+                        <td>27 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Photpho (P)</td>
+                        <td>22 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kali (K)</td>
+                        <td>358 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Natri (Na)</td>
+                        <td>1 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kẽm (Zn)</td>
+                        <td>0.15 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Đồng (Cu)</td>
+                        <td>0.078 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Mangan (Mn)</td>
+                        <td>0.27 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Selen (Se)</td>
+                        <td>1 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Fluoride (F)</td>
+                        <td>2.2 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin C (Tổng Ascorbic Acid)</td>
+                        <td>8.7 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Thiamin</td>
+                        <td>0.031 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Riboflavin</td>
+                        <td>0.073 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Niacin</td>
+                        <td>0.665 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Pantothenic acid</td>
+                        <td>0.334 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin B-6</td>
+                        <td>0.367 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Folate (Tổng)</td>
+                        <td>20 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Choline (Tổng)</td>
+                        <td>9.8 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Betaine</td>
+                        <td>0.1 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Carotene, beta</td>
+                        <td>26 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Carotene, alpha</td>
+                        <td>25 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Lutein + zeaxanthin</td>
+                        <td>22 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin E (alpha-tocopherol)</td>
+                        <td>0.1 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Tocopherol, gamma</td>
+                        <td>0.02 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Tocotrienol, alpha</td>
+                        <td>0.06 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin K (phylloquinone)</td>
+                        <td>0.5 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Tryptophan</td>
+                        <td>0.009 g</td>
+                    </tr>
+                    <tr>
+                        <td>Threonine</td>
+                        <td>0.028 g</td>
+                    </tr>
+                    <tr>
+                        <td>Isoleucine</td>
+                        <td>0.028 g</td>
+                    </tr>
+                    <tr>
+                        <td>Leucine</td>
+                        <td>0.068 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lysine</td>
+                        <td>0.05 g</td>
+                    </tr>
+                    <tr>
+                        <td>Methionine</td>
+                        <td>0.008 g</td>
+                    </tr>
+                    <tr>
+                        <td>Cystine</td>
+                        <td>0.009 g</td>
+                    </tr>
+                    <tr>
+                        <td>Phenylalanine</td>
+                        <td>0.049 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tyrosine</td>
+                        <td>0.009 g</td>
+                    </tr>
+                    <tr>
+                        <td>Valine</td>
+                        <td>0.047 g</td>
+                    </tr>
+                    <tr>
+                        <td>Arginine</td>
+                        <td>0.049 g</td>
+                    </tr>
+                    <tr>
+                        <td>Histidine</td>
+                        <td>0.077 g</td>
+                    </tr>
+                    <tr>
+                        <td>Alanine</td>
+                        <td>0.04 g</td>
+                    </tr>
+                    <tr>
+                        <td>Aspartic acid</td>
+                        <td>0.124 g</td>
+                    </tr>
+                    <tr>
+                        <td>Glutamic acid</td>
+                        <td>0.152 g</td>
+                    </tr>
+                    <tr>
+                        <td>Glycine</td>
+                        <td>0.038 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proline</td>
+                        <td>0.028 g</td>
+                    </tr>
+                    <tr>
+                        <td>Serine</td>
+                        <td>0.04 g</td>
+                    </tr>
+                </tbody>
+            </table>
+            Theo https://fdc.nal.usda.gov/food-details/173944/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này phù hợp cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "Bánh mì")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g bánh mì</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thành Phần</th>
+                        <th>Giá Trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nước</td>
+                        <td>36.4 g</td>
+                    </tr>
+                    <tr>
+                        <td>Năng Lượng</td>
+                        <td>266 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Năng Lượng</td>
+                        <td>1110 kJ</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>8.85 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Lipid (Chất béo)</td>
+                        <td>3.33 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tro</td>
+                        <td>1.98 g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrate</td>
+                        <td>49.4 g</td>
+                    </tr>
+                    <tr>
+                        <td>Chất xơ (Tổng hợp)</td>
+                        <td>2.7 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Đường</td>
+                        <td>5.67 g</td>
+                    </tr>
+                    <tr>
+                        <td>Glucose</td>
+                        <td>1.57 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fructose</td>
+                        <td>2.43 g</td>
+                    </tr>
+                    <tr>
+                        <td>Maltose</td>
+                        <td>1.67 g</td>
+                    </tr>
+                    <tr>
+                        <td>Starch</td>
+                        <td>37.2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Canxi (Ca)</td>
+                        <td>144 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Sắt (Fe)</td>
+                        <td>3.61 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magnesium (Mg)</td>
+                        <td>23 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Photpho (P)</td>
+                        <td>98 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kali (K)</td>
+                        <td>126 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Natri (Na)</td>
+                        <td>490 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kẽm (Zn)</td>
+                        <td>0.74 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Đồng (Cu)</td>
+                        <td>0.101 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Mangan (Mn)</td>
+                        <td>0.536 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Selen (Se)</td>
+                        <td>22 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Fluoride (F)</td>
+                        <td>48.9 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Thiamin</td>
+                        <td>0.533 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Riboflavin</td>
+                        <td>0.243 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Niacin</td>
+                        <td>4.78 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Pantothenic acid</td>
+                        <td>0.536 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin B-6</td>
+                        <td>0.087 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Folate (Tổng)</td>
+                        <td>111 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Folic acid</td>
+                        <td>86 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Folate, food</td>
+                        <td>25 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Folate, DFE</td>
+                        <td>171 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Choline (Tổng)</td>
+                        <td>14.6 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Betaine</td>
+                        <td>102 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin A, IU</td>
+                        <td>1 IU</td>
+                    </tr>
+                    <tr>
+                        <td>Lutein + zeaxanthin</td>
+                        <td>44 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin E (alpha-tocopherol)</td>
+                        <td>0.22 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin K (phylloquinone)</td>
+                        <td>0.2 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Fatty acids, tổng bão hòa</td>
+                        <td>0.698 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fatty acids, tổng không bão hòa đơn</td>
+                        <td>0.599 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fatty acids, tổng không bão hòa đa</td>
+                        <td>1.6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fatty acids, tổng trans</td>
+                        <td>0.027 g</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            Theo https://fdc.nal.usda.gov/food-details/174924/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này cần hạn chế, giảm ít trong bữa ăn cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "xúc xích")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g xúc xích</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thành Phần</th>
+                        <th>Giá Trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thành Phần</th>
+                                <th>Giá Trị</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Nước</td><td>56.6 g</td></tr>
+                            <tr><td>Năng lượng</td><td>301 kcal</td></tr>
+                            <tr><td>Năng lượng</td><td>1260 kJ</td></tr>
+                            <tr><td>Protein</td><td>12.1 g</td></tr>
+                            <tr><td>Tổng lipid (chất béo)</td><td>26.6 g</td></tr>
+                            <tr><td>Tro</td><td>2.81 g</td></tr>
+                            <tr><td>Carbohydrate</td><td>1.98 g</td></tr>
+                            <tr><td>Canxi, Ca</td><td>7 mg</td></tr>
+                            <tr><td>Sắt, Fe</td><td>1 mg</td></tr>
+                            <tr><td>Magiê, Mg</td><td>12 mg</td></tr>
+                            <tr><td>Photpho, P</td><td>107 mg</td></tr>
+                            <tr><td>Kalium, K</td><td>189 mg</td></tr>
+                            <tr><td>Natri, Na</td><td>848 mg</td></tr>
+                            <tr><td>Kẽm, Zn</td><td>2.11 mg</td></tr>
+                            <tr><td>Đồng, Cu</td><td>0.06 mg</td></tr>
+                            <tr><td>Mangan, Mn</td><td>0.037 mg</td></tr>
+                            <tr><td>Se, Se</td><td>13.1 µg</td></tr>
+                            <tr><td>Thiamin</td><td>0.26 mg</td></tr>
+                            <tr><td>Riboflavin</td><td>0.17 mg</td></tr>
+                            <tr><td>Niacin</td><td>3.23 mg</td></tr>
+                            <tr><td>Acid pantothenic</td><td>0.44 mg</td></tr>
+                            <tr><td>Vitamin B-6</td><td>0.17 mg</td></tr>
+                            <tr><td>Folate, tổng</td><td>4 µg</td></tr>
+                            <tr><td>Vitamin B-12</td><td>1.51 µg</td></tr>
+                            <tr><td>Vitamin D (D2 + D3), Đơn vị quốc tế</td><td>44 IU</td></tr>
+                            <tr><td>Vitamin D (D2 + D3)</td><td>1.1 µg</td></tr>
+                            <tr><td>Chất béo, tổng bão hòa</td><td>9.21 g</td></tr>
+                            <tr><td>Chất béo, tổng không bão hòa đơn</td><td>12.3 g</td></tr>
+                            <tr><td>Chất béo, tổng không bão hòa đa</td><td>2.83 g</td></tr>
+                            <tr><td>Cholesterol</td><td>71 mg</td></tr>
+                            <tr><td>Tryptophan</td><td>0.107 g</td></tr>
+                            <tr><td>Threonine</td><td>0.465 g</td></tr>
+                            <tr><td>Isoleucine</td><td>0.485 g</td></tr>
+                            <tr><td>Leucine</td><td>0.81 g</td></tr>
+                            <tr><td>Lysine</td><td>0.903 g</td></tr>
+                            <tr><td>Methionine</td><td>0.364 g</td></tr>
+                            <tr><td>Cystine</td><td>0.105 g</td></tr>
+                            <tr><td>Phenylalanine</td><td>0.405 g</td></tr>
+                            <tr><td>Tyrosine</td><td>0.386 g</td></tr>
+                            <tr><td>Valine</td><td>0.464 g</td></tr>
+                            <tr><td>Arginine</td><td>0.765 g</td></tr>
+                            <tr><td>Histidine</td><td>0.395 g</td></tr>
+                            <tr><td>Alanine</td><td>0.774 g</td></tr>
+                            <tr><td>Aspartic acid</td><td>1.14 g</td></tr>
+                            <tr><td>Glutamic acid</td><td>1.99 g</td></tr>
+                            <tr><td>Glycine</td><td>0.857 g</td></tr>
+                            <tr><td>Proline</td><td>0.673 g</td></tr>
+                            <tr><td>Serine</td><td>0.51 g</td></tr>
+                        </tbody>
+                    </table>
+
+                </tbody>
+            </table>
+            Theo https://fdc.nal.usda.gov/food-details/172954/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này không phù hợp và cần hạn chế cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "Yến mạch")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g yến mạch</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thành Phần</th>
+                        <th>Giá Trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nước</td><td>84 g</td></tr>
+                    <tr><td>Năng lượng</td><td>68 kcal</td></tr>
+                    <tr><td>Năng lượng</td><td>283 kJ</td></tr>
+                    <tr><td>Protein</td><td>2.37 g</td></tr>
+                    <tr><td>Tổng lipid (chất béo)</td><td>1.36 g</td></tr>
+                    <tr><td>Tro</td><td>0.56 g</td></tr>
+                    <tr><td>Carbohydrate</td><td>11.7 g</td></tr>
+                    <tr><td>Chất xơ, tổng</td><td>1.7 g</td></tr>
+                    <tr><td>Đường tổng</td><td>0.46 g</td></tr>
+                    <tr><td>Đường sucrose</td><td>0.29 g</td></tr>
+                    <tr><td>Đường galactose</td><td>0.16 g</td></tr>
+                    <tr><td>Tinh bột</td><td>10.4 g</td></tr>
+                    <tr><td>Canxi, Ca</td><td>80 mg</td></tr>
+                    <tr><td>Sắt, Fe</td><td>5.96 mg</td></tr>
+                    <tr><td>Magiê, Mg</td><td>26 mg</td></tr>
+                    <tr><td>Photpho, P</td><td>77 mg</td></tr>
+                    <tr><td>Kalium, K</td><td>61 mg</td></tr>
+                    <tr><td>Natri, Na</td><td>49 mg</td></tr>
+                    <tr><td>Kẽm, Zn</td><td>0.62 mg</td></tr>
+                    <tr><td>Đồng, Cu</td><td>0.066 mg</td></tr>
+                    <tr><td>Mangan, Mn</td><td>0.558 mg</td></tr>
+                    <tr><td>Se, Se</td><td>5 µg</td></tr>
+                    <tr><td>Thiamin</td><td>0.26 mg</td></tr>
+                    <tr><td>Riboflavin</td><td>0.215 mg</td></tr>
+                    <tr><td>Niacin</td><td>3.02 mg</td></tr>
+                    <tr><td>Acid pantothenic</td><td>0.317 mg</td></tr>
+                    <tr><td>Vitamin B-6</td><td>0.29 mg</td></tr>
+                    <tr><td>Folate, tổng</td><td>44 µg</td></tr>
+                    <tr><td>Acid folic</td><td>39 µg</td></tr>
+                    <tr><td>Folate, thực phẩm</td><td>5 µg</td></tr>
+                    <tr><td>Folate, DFE</td><td>71 µg</td></tr>
+                    <tr><td>Choline, tổng</td><td>4.7 mg</td></tr>
+                    <tr><td>Vitamin A, RAE</td><td>130 µg</td></tr>
+                    <tr><td>Retinol</td><td>130 µg</td></tr>
+                    <tr><td>Vitamin A, IU</td><td>433 IU</td></tr>
+                    <tr><td>Vitamin E (alpha-tocopherol)</td><td>0.07 mg</td></tr>
+                    <tr><td>Tocopherol, beta</td><td>0.01 mg</td></tr>
+                    <tr><td>Tocopherol, gamma</td><td>0.03 mg</td></tr>
+                    <tr><td>Tocopherol, delta</td><td>0.01 mg</td></tr>
+                    <tr><td>Tocotrienol, alpha</td><td>0.18 mg</td></tr>
+                </tbody>
+            </table>
+
+            Theo https://fdc.nal.usda.gov/food-details/171662/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này phù hợp cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "thịt xông khói")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g thịt xông khói</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dinh dưỡng</th>
+                        <th>Giá trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nước</td>
+                        <td>14.2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Năng lượng (Hệ số Atwater Tổng quát)</td>
+                        <td>501 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Năng lượng (Hệ số Atwater Cụ thể)</td>
+                        <td>512 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Đạm</td>
+                        <td>6.54 g</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>40.9 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng lipid (chất béo)</td>
+                        <td>36.5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng chất béo (NLEA)</td>
+                        <td>34.6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tro</td>
+                        <td>6.33 g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrate</td>
+                        <td>2.1 g</td>
+                    </tr>
+                    <tr>
+                        <td>Đường, Tổng</td>
+                        <td>3.14 g</td>
+                    </tr>
+                    <tr>
+                        <td>Canxi, Ca</td>
+                        <td>13 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Sắt, Fe</td>
+                        <td>1.28 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magie, Mg</td>
+                        <td>36.5 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Photpho, P</td>
+                        <td>415 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kali, K</td>
+                        <td>557 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Natri, Na</td>
+                        <td>1830 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kẽm, Zn</td>
+                        <td>3.56 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Đồng, Cu</td>
+                        <td>0.13 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Mangan, Mn</td>
+                        <td>0.02 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng bão hòa</td>
+                        <td>12.6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng không bão hòa đơn</td>
+                        <td>15.8 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng không bão hòa đa</td>
+                        <td>6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng trans</td>
+                        <td>0.15 g</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            Theo https://fdc.nal.usda.gov/food-details/749420/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này không phù hợp và cần hạn chế cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "táo")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g táo</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dinh dưỡng</th>
+                        <th>Giá trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nước</td>
+                        <td>14.2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Năng lượng (Hệ số Atwater Tổng quát)</td>
+                        <td>501 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Năng lượng (Hệ số Atwater Cụ thể)</td>
+                        <td>512 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Đạm</td>
+                        <td>6.54 g</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>40.9 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng lipid (chất béo)</td>
+                        <td>36.5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng chất béo (NLEA)</td>
+                        <td>34.6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tro</td>
+                        <td>6.33 g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrates</td>
+                        <td>2.1 g</td>
+                    </tr>
+                    <tr>
+                        <td>Đường, Tổng</td>
+                        <td>3.14 g</td>
+                    </tr>
+                    <tr>
+                        <td>Canxi, Ca</td>
+                        <td>13 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Sắt, Fe</td>
+                        <td>1.28 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magie, Mg</td>
+                        <td>36.5 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Photpho, P</td>
+                        <td>415 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kali, K</td>
+                        <td>557 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Natri, Na</td>
+                        <td>1830 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kẽm, Zn</td>
+                        <td>3.56 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Đồng, Cu</td>
+                        <td>0.13 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Mangan, Mn</td>
+                        <td>0.02 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng bão hòa</td>
+                        <td>12.6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng không bão hòa đơn</td>
+                        <td>15.8 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng không bão hòa đa</td>
+                        <td>6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Acid béo, tổng trans</td>
+                        <td>0.15 g</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            Theo https://fdc.nal.usda.gov/food-details/171688/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này phù hợp cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "Cơm")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g cơm</th>
+            <strong>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dinh dưỡng</th>
+                            <th>Giá trị</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nước</td>
+                            <td>68.4 g</td>
+                        </tr>
+                        <tr>
+                            <td>Năng lượng</td>
+                            <td>130 kcal</td>
+                        </tr>
+                        <tr>
+                            <td>Năng lượng</td>
+                            <td>544 kJ</td>
+                        </tr>
+                        <tr>
+                            <td>Protein</td>
+                            <td>2.69 g</td>
+                        </tr>
+                        <tr>
+                            <td>Tổng lipid (chất béo)</td>
+                            <td>0.28 g</td>
+                        </tr>
+                        <tr>
+                            <td>Tro</td>
+                            <td>0.41 g</td>
+                        </tr>
+                        <tr>
+                            <td>Carbohydrate</td>
+                            <td>28.2 g</td>
+                        </tr>
+                        <tr>
+                            <td>Chất xơ, tổng số</td>
+                            <td>0.4 g</td>
+                        </tr>
+                        <tr>
+                            <td>Tổng đường</td>
+                            <td>0.05 g</td>
+                        </tr>
+                        <tr>
+                            <td>Canxi, Ca</td>
+                            <td>10 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Sắt, Fe</td>
+                            <td>0.2 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Magie, Mg</td>
+                            <td>12 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Photpho, P</td>
+                            <td>43 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Kali, K</td>
+                            <td>35 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Natri, Na</td>
+                            <td>1 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Kẽm, Zn</td>
+                            <td>0.49 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Đồng, Cu</td>
+                            <td>0.069 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Mangan, Mn</td>
+                            <td>0.472 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Selenium, Se</td>
+                            <td>7.5 µg</td>
+                        </tr>
+                        <tr>
+                            <td>Thiamin</td>
+                            <td>0.02 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Riboflavin</td>
+                            <td>0.013 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Niacin</td>
+                            <td>0.4 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Axit Pantothenic</td>
+                            <td>0.39 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Vitamin B-6</td>
+                            <td>0.093 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Folate, tổng</td>
+                            <td>3 µg</td>
+                        </tr>
+                        <tr>
+                            <td>Folate, thực phẩm</td>
+                            <td>3 µg</td>
+                        </tr>
+                        <tr>
+                            <td>Folate, DFE</td>
+                            <td>3 µg</td>
+                        </tr>
+                        <tr>
+                            <td>Choline, tổng</td>
+                            <td>2.1 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Vitamin E (alpha-tocopherol)</td>
+                            <td>0.04 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Tryptophan</td>
+                            <td>0.031 g</td>
+                        </tr>
+                        <tr>
+                            <td>Threonine</td>
+                            <td>0.096 g</td>
+                        </tr>
+                        <tr>
+                            <td>Isoleucine</td>
+                            <td>0.116 g</td>
+                        </tr>
+                        <tr>
+                            <td>Leucine</td>
+                            <td>0.222 g</td>
+                        </tr>
+                        <tr>
+                            <td>Lysine</td>
+                            <td>0.097 g</td>
+                        </tr>
+                        <tr>
+                            <td>Methionine</td>
+                            <td>0.063 g</td>
+                        </tr>
+                        <tr>
+                            <td>Cystine</td>
+                            <td>0.055 g</td>
+                        </tr>
+                        <tr>
+                            <td>Phenylalanine</td>
+                            <td>0.144 g</td>
+                        </tr>
+                        <tr>
+                            <td>Tyrosine</td>
+                            <td>0.09 g</td>
+                        </tr>
+                        <tr>
+                            <td>Valine</td>
+                            <td>0.164 g</td>
+                        </tr>
+                        <tr>
+                            <td>Arginine</td>
+                            <td>0.224 g</td>
+                        </tr>
+                        <tr>
+                            <td>Histidine</td>
+                            <td>0.063 g</td>
+                        </tr>
+                        <tr>
+                            <td>Alanine</td>
+                            <td>0.156 g</td>
+                        </tr>
+                        <tr>
+                            <td>Axit aspartic</td>
+                            <td>0.253 g</td>
+                        </tr>
+                        <tr>
+                            <td>Axit glutamic</td>
+                            <td>0.524 g</td>
+                        </tr>
+                        <tr>
+                            <td>Glycine</td>
+                            <td>0.122 g</td>
+                        </tr>
+                        <tr>
+                            <td>Proline</td>
+                            <td>0.127 g</td>
+                        </tr>
+                        <tr>
+                            <td>Serine</td>
+                            <td>0.141 g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </strong>
+
+            Theo https://fdc.nal.usda.gov/food-details/169757/nutrients
+            <p>
+                <strong>
+                    - Thực phẩm này cần hạn chế, giảm ít trong bữa ăn cho người bị bệnh tiểu đường, cao huyết áp.
+                </strong>
+            </p>
+        </strong>
+    }
+    if (pr.Label == "dứa")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g dứa</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dinh dưỡng</th>
+                        <th>Giá trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nước</td>
+                        <td>86 g</td>
+                    </tr>
+                    <tr>
+                        <td>Năng lượng</td>
+                        <td>50 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Năng lượng</td>
+                        <td>209 kJ</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>0.54 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng lipid (chất béo)</td>
+                        <td>0.12 g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrate</td>
+                        <td>13.1 g</td>
+                    </tr>
+                    <tr>
+                        <td>Chất xơ, tổng số</td>
+                        <td>1.4 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng đường</td>
+                        <td>9.85 g</td>
+                    </tr>
+                    <tr>
+                        <td>Canxi, Ca</td>
+                        <td>13 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Sắt, Fe</td>
+                        <td>0.29 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magie, Mg</td>
+                        <td>12 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Photpho, P</td>
+                        <td>8 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kali, K</td>
+                        <td>109 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Natri, Na</td>
+                        <td>1 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Kẽm, Zn</td>
+                        <td>0.12 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Đồng, Cu</td>
+                        <td>0.11 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Mangan, Mn</td>
+                        <td>0.927 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin C</td>
+                        <td>47.8 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Thiamin</td>
+                        <td>0.079 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Riboflavin</td>
+                        <td>0.032 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Niacin</td>
+                        <td>0.5 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Axit Pantothenic</td>
+                        <td>0.213 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin B-6</td>
+                        <td>0.112 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Folate, tổng</td>
+                        <td>18 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin A, RAE</td>
+                        <td>3 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin E</td>
+                        <td>0.02 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin K</td>
+                        <td>0.7 µg</td>
+                    </tr>
+                    <tr>
+                        <td>Tryptophan</td>
+                        <td>0.031 g</td>
+                    </tr>
+                    <tr>
+                        <td>Threonine</td>
+                        <td>0.096 g</td>
+                    </tr>
+                    <tr>
+                        <td>Isoleucine</td>
+                        <td>0.116 g</td>
+                    </tr>
+                    <tr>
+                        <td>Leucine</td>
+                        <td>0.222 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lysine</td>
+                        <td>0.097 g</td>
+                    </tr>
+                    <tr>
+                        <td>Methionine</td>
+                        <td>0.063 g</td>
+                    </tr>
+                    <tr>
+                        <td>Cystine</td>
+                        <td>0.055 g</td>
+                    </tr>
+                    <tr>
+                        <td>Phenylalanine</td>
+                        <td>0.144 g</td>
+                    </tr>
+                    <tr>
+                        <td>Tyrosine</td>
+                        <td>0.09 g</td>
+                    </tr>
+                    <tr>
+                        <td>Valine</td>
+                        <td>0.164 g</td>
+                    </tr>
+                    <tr>
+                        <td>Arginine</td>
+                        <td>0.224 g</td>
+                    </tr>
+                    <tr>
+                        <td>Histidine</td>
+                        <td>0.063 g</td>
+                    </tr>
+                    <tr>
+                        <td>Alanine</td>
+                        <td>0.156 g</td>
+                    </tr>
+                    <tr>
+                        <td>Axit aspartic</td>
+                        <td>0.253 g</td>
+                    </tr>
+                    <tr>
+                        <td>Axit glutamic</td>
+                        <td>0.524 g</td>
+                    </tr>
+                    <tr>
+                        <td>Glycine</td>
+                        <td>0.122 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proline</td>
+                        <td>0.127 g</td>
+                    </tr>
+                    <tr>
+                        <td>Serine</td>
+                        <td>0.141 g</td>
+                    </tr>
+                </tbody>
+            </table>
+        </strong>
+        <p>
+            <strong>
+                Theo https://fdc.nal.usda.gov/food-details/169124/nutrients
+            </strong>
+            <strong>
+                - Thực phẩm này cần hạn chế, giảm ít trong bữa ăn cho người bị bệnh tiểu đường, cao huyết áp.
+            </strong>
+        </p>
+    }
+    if (pr.Label == "salad")
+    {
+        <strong>
+            <th>Giá trị dinh dưỡng trong 100g rau salad</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dinh dưỡng</th>
+                        <th>Giá trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nước</td><td>95 g</td></tr>
+                    <tr><td>Năng lượng</td><td>15 kcal</td></tr>
+                    <tr><td>Năng lượng</td><td>62 kJ</td></tr>
+                    <tr><td>Protein</td><td>1.36 g</td></tr>
+                    <tr><td>Tổng lipid (chất béo)</td><td>0.15 g</td></tr>
+                    <tr><td>Ash</td><td>0.62 g</td></tr>
+                    <tr><td>Carbohydrate</td><td>2.87 g</td></tr>
+                    <tr><td>Chất xơ, tổng số</td><td>1.3 g</td></tr>
+                    <tr><td>Tổng đường</td><td>0.78 g</td></tr>
+                    <tr><td>Glucose</td><td>0.36 g</td></tr>
+                    <tr><td>Fructose</td><td>0.43 g</td></tr>
+                    <tr><td>Canxi, Ca</td><td>36 mg</td></tr>
+                    <tr><td>Sắt, Fe</td><td>0.86 mg</td></tr>
+                    <tr><td>Magie, Mg</td><td>13 mg</td></tr>
+                    <tr><td>Photpho, P</td><td>29 mg</td></tr>
+                    <tr><td>Kali, K</td><td>194 mg</td></tr>
+                    <tr><td>Natri, Na</td><td>28 mg</td></tr>
+                    <tr><td>Kẽm, Zn</td><td>0.18 mg</td></tr>
+                    <tr><td>Đồng, Cu</td><td>0.029 mg</td></tr>
+                    <tr><td>Mangan, Mn</td><td>0.25 mg</td></tr>
+                    <tr><td>Selenium, Se</td><td>0.6 µg</td></tr>
+                    <tr><td>Vitamin C</td><td>9.2 mg</td></tr>
+                    <tr><td>Thiamin</td><td>0.07 mg</td></tr>
+                    <tr><td>Riboflavin</td><td>0.08 mg</td></tr>
+                    <tr><td>Niacin</td><td>0.375 mg</td></tr>
+                    <tr><td>Axit Pantothenic</td><td>0.134 mg</td></tr>
+                    <tr><td>Vitamin B-6</td><td>0.09 mg</td></tr>
+                    <tr><td>Folate, tổng</td><td>38 µg</td></tr>
+                    <tr><td>Folate, thực phẩm</td><td>38 µg</td></tr>
+                    <tr><td>Choline, tổng</td><td>13.6 mg</td></tr>
+                    <tr><td>Betaine</td><td>0.2 mg</td></tr>
+                    <tr><td>Vitamin A, RAE</td><td>370 µg</td></tr>
+                    <tr><td>Carotene, beta</td><td>4440 µg</td></tr>
+                    <tr><td>Vitamin E</td><td>0.22 mg</td></tr>
+                    <tr><td>Vitamin K</td><td>126 µg</td></tr>
+                    <tr><td>Tryptophan</td><td>0.009 g</td></tr>
+                    <tr><td>Threonine</td><td>0.059 g</td></tr>
+                    <tr><td>Isoleucine</td><td>0.084 g</td></tr>
+                    <tr><td>Leucine</td><td>0.079 g</td></tr>
+                    <tr><td>Lysine</td><td>0.084 g</td></tr>
+                    <tr><td>Methionine</td><td>0.016 g</td></tr>
+                    <tr><td>Cystine</td><td>0.016 g</td></tr>
+                    <tr><td>Phenylalanine</td><td>0.055 g</td></tr>
+                    <tr><td>Tyrosine</td><td>0.032 g</td></tr>
+                    <tr><td>Valine</td><td>0.07 g</td></tr>
+                    <tr><td>Arginine</td><td>0.071 g</td></tr>
+                    <tr><td>Histidine</td><td>0.022 g</td></tr>
+                    <tr><td>Alanine</td><td>0.056 g</td></tr>
+                    <tr><td>Axit aspartic</td><td>0.142 g</td></tr>
+                    <tr><td>Axit glutamic</td><td>0.182 g</td></tr>
+                    <tr><td>Glycine</td><td>0.057 g</td></tr>
+                    <tr><td>Proline</td><td>0.048 g</td></tr>
+                    <tr><td>Serine</td><td>0.039 g</td></tr>
+                </tbody>
+            </table>
+        </strong>
+        <p>
+            Theo https://fdc.nal.usda.gov/food-details/169249/nutrients
+            <strong>
+                - Thực phẩm này phù hợp cho người bị bệnh tiểu đường, cao huyết áp.
+            </strong>
+        </p>
+    }
 }
